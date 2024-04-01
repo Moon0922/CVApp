@@ -1,88 +1,127 @@
-<script setup lang="ts">
-import WelcomeItem from './WelcomeItem.vue'
-import DocumentationIcon from './icons/IconDocumentation.vue'
-import ToolingIcon from './icons/IconTooling.vue'
-import EcosystemIcon from './icons/IconEcosystem.vue'
-import CommunityIcon from './icons/IconCommunity.vue'
-import SupportIcon from './icons/IconSupport.vue'
-</script>
-
 <template>
-  <WelcomeItem>
-    <template #icon>
-      <DocumentationIcon />
-    </template>
-    <template #heading>Documentation</template>
+    <v-container class="fill-height">
+        <v-responsive class="align-centerfill-height mx-auto" max-width="900">
+            <div class="text-center">
+                <div class="text-body-2 font-weight-light mb-n1">Welcome to</div>
+                <h1 class="text-h2 font-weight-bold">Vuetify</h1>
+            </div>
 
-    Vue’s
-    <a href="https://vuejs.org/" target="_blank" rel="noopener">official documentation</a>
-    provides you with all information you need to get started.
-  </WelcomeItem>
+            <div class="py-4" />
 
-  <WelcomeItem>
-    <template #icon>
-      <ToolingIcon />
-    </template>
-    <template #heading>Tooling</template>
+            <v-row>
+                <v-col cols="12">
+                    <v-card class="py-4"
+                            color="surface-variant"
+                            image="https://cdn.vuetifyjs.com/docs/images/one/create/feature.png"
+                            prepend-icon="mdi-rocket-launch-outline"
+                            rounded="lg"
+                            variant="outlined">
+                        <template #image>
+                            <v-img position="top right" />
+                        </template>
 
-    This project is served and bundled with
-    <a href="https://vitejs.dev/guide/features.html" target="_blank" rel="noopener">Vite</a>. The
-    recommended IDE setup is
-    <a href="https://code.visualstudio.com/" target="_blank" rel="noopener">VSCode</a> +
-    <a href="https://github.com/johnsoncodehk/volar" target="_blank" rel="noopener">Volar</a>. If
-    you need to test your components and web pages, check out
-    <a href="https://www.cypress.io/" target="_blank" rel="noopener">Cypress</a> and
-    <a href="https://on.cypress.io/component" target="_blank" rel="noopener"
-      >Cypress Component Testing</a
-    >.
+                        <template #title>
+                            <h2 class="text-h5 font-weight-bold">Get started</h2>
+                        </template>
 
-    <br />
+                        <template #subtitle>
+                            <div class="text-subtitle-1">
+                                Replace this page by removing <v-kbd>{{ `<HelloWorld />` }}</v-kbd> in <v-kbd>pages/index.vue</v-kbd>.
+                            </div>
+                        </template>
 
-    More instructions are available in <code>README.md</code>.
-  </WelcomeItem>
+                        <v-overlay opacity=".12"
+                                   scrim="primary"
+                                   contained
+                                   model-value
+                                   persistent />
+                    </v-card>
+                </v-col>
 
-  <WelcomeItem>
-    <template #icon>
-      <EcosystemIcon />
-    </template>
-    <template #heading>Ecosystem</template>
+                <v-col cols="6">
+                    <v-card append-icon="mdi-open-in-new"
+                            class="py-4"
+                            color="surface-variant"
+                            href="https://vuetifyjs.com/"
+                            prepend-icon="mdi-text-box-outline"
+                            rel="noopener noreferrer"
+                            rounded="lg"
+                            subtitle="Learn about all things Vuetify in our documentation."
+                            target="_blank"
+                            title="Documentation"
+                            variant="text">
+                        <v-overlay opacity=".06"
+                                   scrim="primary"
+                                   contained
+                                   model-value
+                                   persistent />
+                    </v-card>
+                </v-col>
 
-    Get official tools and libraries for your project:
-    <a href="https://pinia.vuejs.org/" target="_blank" rel="noopener">Pinia</a>,
-    <a href="https://router.vuejs.org/" target="_blank" rel="noopener">Vue Router</a>,
-    <a href="https://test-utils.vuejs.org/" target="_blank" rel="noopener">Vue Test Utils</a>, and
-    <a href="https://github.com/vuejs/devtools" target="_blank" rel="noopener">Vue Dev Tools</a>. If
-    you need more resources, we suggest paying
-    <a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">Awesome Vue</a>
-    a visit.
-  </WelcomeItem>
+                <v-col cols="6">
+                    <v-card append-icon="mdi-open-in-new"
+                            class="py-4"
+                            color="surface-variant"
+                            href="https://vuetifyjs.com/introduction/why-vuetify/#feature-guides"
+                            prepend-icon="mdi-star-circle-outline"
+                            rel="noopener noreferrer"
+                            rounded="lg"
+                            subtitle="Explore available framework Features."
+                            target="_blank"
+                            title="Features"
+                            variant="text">
+                        <v-overlay opacity=".06"
+                                   scrim="primary"
+                                   contained
+                                   model-value
+                                   persistent />
+                    </v-card>
+                </v-col>
 
-  <WelcomeItem>
-    <template #icon>
-      <CommunityIcon />
-    </template>
-    <template #heading>Community</template>
+                <v-col cols="6">
+                    <v-card append-icon="mdi-open-in-new"
+                            class="py-4"
+                            color="surface-variant"
+                            href="https://vuetifyjs.com/components/all"
+                            prepend-icon="mdi-widgets-outline"
+                            rel="noopener noreferrer"
+                            rounded="lg"
+                            subtitle="Discover components in the API Explorer."
+                            target="_blank"
+                            title="Components"
+                            variant="text">
+                        <v-overlay opacity=".06"
+                                   scrim="primary"
+                                   contained
+                                   model-value
+                                   persistent />
+                    </v-card>
+                </v-col>
 
-    Got stuck? Ask your question on
-    <a href="https://chat.vuejs.org" target="_blank" rel="noopener">Vue Land</a>, our official
-    Discord server, or
-    <a href="https://stackoverflow.com/questions/tagged/vue.js" target="_blank" rel="noopener"
-      >StackOverflow</a
-    >. You should also subscribe to
-    <a href="https://news.vuejs.org" target="_blank" rel="noopener">our mailing list</a> and follow
-    the official
-    <a href="https://twitter.com/vuejs" target="_blank" rel="noopener">@vuejs</a>
-    twitter account for latest news in the Vue world.
-  </WelcomeItem>
-
-  <WelcomeItem>
-    <template #icon>
-      <SupportIcon />
-    </template>
-    <template #heading>Support Vue</template>
-
-    As an independent project, Vue relies on community backing for its sustainability. You can help
-    us by
-    <a href="https://vuejs.org/sponsor/" target="_blank" rel="noopener">becoming a sponsor</a>.
-  </WelcomeItem>
+                <v-col cols="6">
+                    <v-card append-icon="mdi-open-in-new"
+                            class="py-4"
+                            color="surface-variant"
+                            href="https://discord.vuetifyjs.com"
+                            prepend-icon="mdi-account-group-outline"
+                            rel="noopener noreferrer"
+                            rounded="lg"
+                            subtitle="Connect with Vuetify developers."
+                            target="_blank"
+                            title="Community"
+                            variant="text">
+                        <v-overlay opacity=".06"
+                                   scrim="primary"
+                                   contained
+                                   model-value
+                                   persistent />
+                    </v-card>
+                </v-col>
+            </v-row>
+        </v-responsive>
+    </v-container>
 </template>
+
+<script setup lang="ts">
+    //
+</script>

@@ -1,15 +1,11 @@
 {
   "dependencies": {
-    "mssql1": {
-      "type": "mssql",
-      "connectionId": "ConnectionStrings:CVAppDbContext"
-    },
     "secrets1": {
       "type": "secrets"
     },
-    "mssql2": {
+    "mssql1": {
       "type": "mssql",
-      "connectionId": "ConnectionStrings"
+      "connectionId": "ConnectionStrings:CVAppDbContext"
     }
   }
 }
