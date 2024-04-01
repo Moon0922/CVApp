@@ -14,10 +14,8 @@ namespace CVApp.Server.Dtos.Responses
     [StructLayout(LayoutKind.Sequential)]
     public struct LICENSE
     {
-        public int nLetterCount;
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 20)]
         public string szLicense;
-        public float fDist;
         public float fTrust;
         public Rect rtPlate;
     }
@@ -36,9 +34,11 @@ namespace CVApp.Server.Dtos.Responses
         public int nPlateCount;
         public LICENSE[] pPlate;
         public string strProcTime;
-        public RESCARPLATEDATA(int n)
+        public RESCARPLATEDATA(int nPlateCount, string strProcTime)
         {
-            pPlate = new LICENSE[n];
+            pPlate = new LICENSE[nPlateCount];
+            this.nPlateCount = nPlateCount;
+            this.strProcTime = strProcTime;
         }
         public RESCARPLATEDATA()
         {

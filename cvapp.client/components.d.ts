@@ -7,7 +7,6 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    About: typeof import('./src/views/AboutView.vue')['default']
     AmazingFeaturesSection: typeof import('./src/components/AmazingFeaturesSection.vue')['default']
     AppBar: typeof import('./src/components/app/AppBar.vue')['default']
     AppFooter: typeof import('./src/components/app/AppFooter.vue')['default']
@@ -16,7 +15,6 @@ declare module 'vue' {
     CustomizeSection: typeof import('./src/components/CustomizeSection.vue')['default']
     DiscoverHelp: typeof import('./src/components/DiscoverHelp.vue')['default']
     FAQSection: typeof import('./src/components/FAQSection.vue')['default']
-    Footer: typeof import('./src/components/app/AppFooter.vue')['default']
     FunFactsSection: typeof import('./src/components/FunFactsSection.vue')['default']
     LandingSection: typeof import('./src/components/LandingSection.vue')['default']
     LogoSection: typeof import('./src/components/LogoSection.vue')['default']
