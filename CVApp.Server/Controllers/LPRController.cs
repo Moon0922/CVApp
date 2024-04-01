@@ -45,6 +45,7 @@ namespace CVApp.Server.Controllers
                 response.Errors.Add("Image is not valid.");
                 return Ok(response);
             }
+            
             Mat grayImage = Utils.GetGrayMatFromSDImage(image);
 
             CARPLATEDATA carPlateData = new CARPLATEDATA();

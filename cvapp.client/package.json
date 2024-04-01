@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@mdi/font": "^7.4.47",
+    "pretty-print-json": "^3.0.0",
     "roboto-fontface": "*",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0",

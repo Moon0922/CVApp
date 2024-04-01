@@ -28,6 +28,9 @@ builder.Services.AddAuthentication(options =>
     };
 });
 builder.Services.AddAuthorization();
+builder.Services.AddCors(options => {
+    options.AddPolicy("Open", policy => policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+});
 builder.Services.AddControllers().AddJsonOptions(options => { options.JsonSerializerOptions.IncludeFields = true; }); ;
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -44,13 +47,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseCors("Open");
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
+
 app.MapControllers();
-
 app.MapFallbackToFile("/index.html");
-
 app.Run();

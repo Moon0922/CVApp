@@ -9,6 +9,11 @@ namespace CVApp.Server.Common
     {
         public static Image GetImageFromBase64(string base64String)
         {
+            int nIndex = base64String.IndexOf("base64");
+            if (nIndex > 0)
+            {
+                base64String = base64String.Substring(nIndex + 7);
+            }
             byte[] imageBytes = Convert.FromBase64String(base64String);
             using (var ms = new MemoryStream(imageBytes, 0, imageBytes.Length))
             {
