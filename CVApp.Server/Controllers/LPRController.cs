@@ -22,7 +22,10 @@ namespace CVApp.Server.Controllers
         
         [DllImport("CSDELPREngine.dll", CallingConvention = CallingConvention.Cdecl)]
         public static extern int CSDELPREngineProcess(byte[] pbGray, int w, int h, ref CARPLATEDATA carPlateData);
-
+        [DllImport("CSUALPREngine.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int CSUALPREngineProcess(byte[] pbGray, int w, int h, ref CARPLATEDATA carPlateData);
+        [DllImport("CSGTLPREngine.dll", CallingConvention = CallingConvention.Cdecl)]
+        public static extern int CSGTLPREngineProcess(byte[] pbGray, int w, int h, ref CARPLATEDATA carPlateData);
         [HttpPost]
         public async Task<ActionResult> GetLPRResult([FromBody] LPRRequest request)
         {
@@ -32,7 +35,6 @@ namespace CVApp.Server.Controllers
             if (request.image_url != null && request.image_url != "") 
             {
                 image = Utils.GetImageFromUrl(request.image_url);
-                //image.Save("image.jpg");
             }
             else
             {
@@ -49,8 +51,20 @@ namespace CVApp.Server.Controllers
             Mat grayImage = Utils.GetGrayMatFromSDImage(image);
 
             CARPLATEDATA carPlateData = new CARPLATEDATA();
-            int nPlates = CSDELPREngineProcess(grayImage.GetRawData(), grayImage.Cols, grayImage.Rows, ref carPlateData);
-            if(nPlates > 0) {
+            int nPlates = 0;
+            if (request.country == "DE")
+                nPlates = CSDELPREngineProcess(grayImage.GetRawData(), grayImage.Cols, grayImage.Rows, ref carPlateData);
+            else if (request.country == "UA")
+                nPlates = CSUALPREngineProcess(grayImage.GetRawData(), grayImage.Cols, grayImage.Rows, ref carPlateData);
+            else if (request.country == "GT")
+                nPlates = CSGTLPREngineProcess(grayImage.GetRawData(), grayImage.Cols, grayImage.Rows, ref carPlateData);
+            else
+            {
+                response.Errors.Add("Country code is not valid.");
+                return Ok(response);
+            }
+
+            if (nPlates > 0) {
                 string strProcTime = carPlateData.nProcTime.ToString() + "ms";
                 response.carPlateData = new RESCARPLATEDATA(nPlates, strProcTime);
                 

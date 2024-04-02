@@ -106,11 +106,12 @@ img.onload = function () {
   }
   ctx.fillStyle = "#000";
 
+  const search = window.location.search;
 
   var data = JSON.stringify({
     "image_base64": dataURL,
     "image_url": "",
-    "country": "DE"
+    "country": search.substring(search.length -  2)
   });
 
   const fetchPromise = fetch("http://localhost:5000/api/lpr", {

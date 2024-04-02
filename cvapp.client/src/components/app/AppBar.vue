@@ -1,6 +1,5 @@
 <template>
   <v-app-bar>
-
       <v-col cols="2">
         <a href="/"><img class="avatar" src="/assets/logo.png" alt="logo"/></a>
       </v-col>
@@ -14,16 +13,16 @@
                   <v-col cols="6">
                     <ul class="sub-col">
                       <a href="#">LPR</a>
-                      <li class="sub-col-item"><a href="/product/license-plate-recognition?country=german">German</a></li>
-                      <li class="sub-col-item"><a href="/product/license-plate-recognition?country=german">Ukraine</a></li>
-                      <li class="sub-col-item"><a href="/product/license-plate-recognition?country=german">China</a></li>
+                      <li class="sub-col-item"><a href="/product/license-plate-recognition?country=DE">German</a></li>
+                      <li class="sub-col-item"><a href="/product/license-plate-recognition?country=UA">Ukraine</a></li>
+                      <li class="sub-col-item"><a href="/product/license-plate-recognition?country=GT">Guatemala</a></li>
                     </ul>
                   </v-col>
                   <v-col cols="6">
                     <ul class="sub-col">
                       <a href="#">Facial Recognition</a>
-                      <li class="sub-col-item"><a>Face Detection</a></li>
-                      <li class="sub-col-item"><a>Face Landmark</a></li>
+                      <li class="sub-col-item"><a href="#">Face Detection</a></li>
+                      <li class="sub-col-item"><a href="#">Face Landmark</a></li>
                     </ul>
                   </v-col>
                 </v-row>
