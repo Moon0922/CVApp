@@ -10,7 +10,10 @@ import Vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 import Components from 'unplugin-vue-components/vite'
 import ViteFonts from 'unplugin-fonts/vite'
 
-const baseFolder = env.APPDATA !== undefined && env.APPDATA !== '' ? `${env.APPDATA}/ASP.NET/https` : `${env.HOME}/.aspnet/https`;
+const baseFolder =
+    env.APPDATA !== undefined && env.APPDATA !== ''
+        ? `${env.APPDATA}/ASP.NET/https`
+        : `${env.HOME}/.aspnet/https`;
 
 const certificateName = "cvapp.client";
 const certFilePath = path.join(baseFolder, `${certificateName}.pem`);
@@ -31,8 +34,9 @@ if (!fs.existsSync(certFilePath) || !fs.existsSync(keyFilePath)) {
 }
 
 const target = env.ASPNETCORE_HTTPS_PORT ? `https://localhost:${env.ASPNETCORE_HTTPS_PORT}` :
-    env.ASPNETCORE_URLS ? env.ASPNETCORE_URLS.split(';')[0] : 'https://localhost:7135';
+    env.ASPNETCORE_URLS ? env.ASPNETCORE_URLS.split(';')[0] : 'https://localhost:7056';
 
+// https://vitejs.dev/config/
 export default defineConfig({
     plugins: [
         Vue({
@@ -64,17 +68,16 @@ export default defineConfig({
         ],
     },
     server: {
-        //proxy: {
-        //    '^/register': {
-        //        target,
-        //        secure: false
-        //    }
-        //},
-        host: '127.0.0.1',
+        proxy: {
+            '^/api/lpr': {
+                target,
+                secure: false
+            }
+        },
         port: 5173,
-        // https: {
-        //     key: fs.readFileSync(keyFilePath),
-        //     cert: fs.readFileSync(certFilePath),
-        // }
+        https: {
+            key: fs.readFileSync(keyFilePath),
+            cert: fs.readFileSync(certFilePath),
+        }
     }
 })

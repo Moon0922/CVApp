@@ -14,22 +14,28 @@
   "dependencies": {
     "@mdi/font": "^7.4.47",
     "pretty-print-json": "^3.0.0",
-    "roboto-fontface": "*",
+    "roboto-fontface": "^0.10.0",
+    "unplugin-fonts": "^1.1.1",
+    "unplugin-vue-components": "^0.26.0",
+    "vite-plugin-vuetify": "^2.0.3",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0",
-    "vuetify": "^3.5.11",
+    "vuetify": "^3.5.13",
     "vuex": "^4.1.0"
   },
   "devDependencies": {
-    "@babel/types": "^7.24.0",
-    "@types/node": "^20.11.25",
+    "@rushstack/eslint-patch": "^1.3.3",
+    "@tsconfig/node20": "^20.1.2",
+    "@types/node": "^20.11.28",
     "@vitejs/plugin-vue": "^5.0.4",
-    "sass": "^1.71.1",
-    "typescript": "^5.4.2",
-    "unplugin-fonts": "^1.1.1",
-    "unplugin-vue-components": "^0.26.0",
-    "vite": "^5.1.5",
-    "vite-plugin-vuetify": "^2.0.3",
+    "@vue/eslint-config-typescript": "^12.0.0",
+    "@vue/tsconfig": "^0.5.1",
+    "eslint": "^8.49.0",
+    "eslint-plugin-vue": "^9.17.0",
+    "npm-run-all2": "^6.1.2",
+    "sass": "^1.72.0",
+    "typescript": "~5.4.0",
+    "vite": "^5.1.6",
     "vue-tsc": "^2.0.6"
   }
 }

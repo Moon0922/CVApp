@@ -31,7 +31,7 @@ namespace CVApp.Server.Controllers
         {
             LPRResponse response = new LPRResponse();
             response.code = 200;
-            Image image = null;
+            Image image;
             if (request.image_url != null && request.image_url != "") 
             {
                 image = Utils.GetImageFromUrl(request.image_url);

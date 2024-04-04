@@ -36,8 +36,10 @@ export default defineComponent({
     ...mapMutations([]),
   },
   created() {
+    console.log("test");
   },
   mounted() {
+    console.log("test1");
   },
   unmounted() {
   },

@@ -1,36 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
-using CVApp.Server.Data;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<CVAppDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("CVAppDbContext") ?? throw new InvalidOperationException("Connection string 'CVAppDbContext' not found.")));
 
-// Add services to the container.
-builder.Services.AddAuthentication(options =>
-{
-    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-}).AddJwtBearer(o =>
-{
-    o.TokenValidationParameters = new TokenValidationParameters
-    {
-        ValidIssuer = builder.Configuration["Jwt:Issuer"],
-        ValidAudience = builder.Configuration["Jwt:Audience"],
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])),
-        ValidateIssuer = true,
-        ValidateAudience = true,
-        ValidateLifetime = false,
-        ValidateIssuerSigningKey = true
-    };
-});
-builder.Services.AddAuthorization();
 builder.Services.AddCors(options => {
     options.AddPolicy("Open", policy => policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 });
-builder.Services.AddControllers().AddJsonOptions(options => { options.JsonSerializerOptions.IncludeFields = true; }); ;
+builder.Services.AddControllers().AddJsonOptions(options => { options.JsonSerializerOptions.IncludeFields = true; });
+builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -45,11 +19,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 app.UseCors("Open");
+
 app.UseHttpsRedirection();
-app.UseAuthentication();
+
 app.UseAuthorization();
 
-
 app.MapControllers();
+
 app.MapFallbackToFile("/index.html");
+
 app.Run();

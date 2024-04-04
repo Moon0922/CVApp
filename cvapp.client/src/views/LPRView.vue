@@ -42,30 +42,22 @@
 </template>
 
 <script setup lang="ts">
-import { prettyPrintJson } from 'pretty-print-json';
+import {prettyPrintJson} from 'pretty-print-json';
+import {onBeforeMount} from 'vue'
 
-const images = [
-  {
-    src: '/assets/products/lpr/german/img(01).jpg',
-    alt: "img(01).jpg",
-    id: "img(01)"
-  },
-  {
-    src: '/assets/products/lpr/german/img(02).jpg',
-    alt: "img(02).jpg",
-    id: "img(02)"
-  },
-  {
-    src: '/assets/products/lpr/german/img(03).jpg',
-    alt: "img(03).jpg",
-    id: "img(03)"
-  },
-  {
-    src: '/assets/products/lpr/german/img(04).jpg',
-    alt: "img(04).jpg",
-    id: "img(04)"
+let images = []
+
+onBeforeMount(() => {
+  const search = window.location.search;
+  for (let i = 1; i < 5; i++) {
+    let id = "img(0" + i + ")";
+    images.push({
+      'src': '/assets/products/lpr/' + search.substring(search.length - 2) + '/' + id + '.jpg',
+      'alt': id + '.jpg',
+      'id' : id
+    });
   }
-]
+})
 
 function removeAllActive() {
   for (let i = 0; i < 4; i++) {
@@ -111,10 +103,10 @@ img.onload = function () {
   var data = JSON.stringify({
     "image_base64": dataURL,
     "image_url": "",
-    "country": search.substring(search.length -  2)
+    "country": search.substring(search.length - 2)
   });
 
-  const fetchPromise = fetch("http://localhost:5000/api/lpr", {
+  const fetchPromise = fetch("/api/lpr", {
     method: "POST",
     mode: "cors",
     headers: {

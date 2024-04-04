@@ -63,10 +63,6 @@ li a, .dropbtn {
   text-decoration: none;
 }
 
-//li a:hover, .dropdown:hover .dropbtn {
-//  //background-color: red;
-//}
-
 li.dropdown {
   display: inline-block;
 }
@@ -123,6 +119,3 @@ li.sub-col-item a {
   cursor: pointer;
 }
 </style>
-<script setup>
-
-</script>
