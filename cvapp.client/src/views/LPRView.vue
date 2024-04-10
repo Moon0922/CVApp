@@ -54,7 +54,7 @@ onBeforeMount(() => {
     images.push({
       'src': '/assets/products/lpr/' + search.substring(search.length - 2) + '/' + id + '.jpg',
       'alt': id + '.jpg',
-      'id' : id
+      'id': id
     });
   }
 })
@@ -129,8 +129,10 @@ img.onload = function () {
           let top = data.carPlateData.pPlate[i].rtPlate.top * scale;
           let right = data.carPlateData.pPlate[i].rtPlate.right * scale;
           let bottom = data.carPlateData.pPlate[i].rtPlate.bottom * scale;
-          ctx.font = "20px Arial";
-          ctx.fillStyle = "red";
+          ctx.font = "20px Arial Bold";
+          ctx.fillStyle = "green";
+          ctx.fillRect(x + left - 10, y + top - 25, 15 * data.carPlateData.pPlate[i].szLicense.length + 10, 25);
+          ctx.fillStyle = "black";
           ctx.fillText(data.carPlateData.pPlate[i].szLicense, x + left, y + top - 5);
           ctx.strokeStyle = "blue";
           ctx.lineWidth = 5;
